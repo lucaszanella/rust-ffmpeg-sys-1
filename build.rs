@@ -681,6 +681,24 @@ fn main() {
             "cargo:rustc-link-search=native={}",
             ffmpeg_root_dir.join(format!("{}/{}/lib", os_folder, arch_folder)).to_string_lossy()
         );
+        if cfg!(feature = "link-lib-vdpau") {
+            //println!("cargo:rerun-if-changed=build.rs");
+            println!("cargo:rustc-link-search=/usr/lib/x86_64-linux-gnu/");
+            println!("cargo:rustc-link-lib=dylib=va-x11");
+            println!("cargo:rustc-link-lib=static=z");
+            println!("cargo:rustc-link-lib=dylib=dl");
+            println!("cargo:rustc-link-lib=dylib=vdpau");
+            println!("cargo:rustc-link-lib=dylib=va");
+            println!("cargo:rustc-link-lib=dylib=va-drm");
+            println!("cargo:rustc-link-lib=dylib=va-x11");
+            println!("cargo:rustc-link-lib=dylib=xcb");
+            println!("cargo:rustc-link-lib=dylib=X11");
+            println!("cargo:rustc-link-lib=dylib=Xext");
+            println!("cargo:rustc-link-lib=dylib=xcb-shm");
+        }
+
+            //println!("cargo:rustc-link-lib=static=X11");
+
         link_to_libraries(statik);
         //println!("include dir: {}", ffmpeg_root_dir.join(format!("{}/{}/include", os_folder, arch_folder)).to_str().unwrap());
         vec![ffmpeg_root_dir.join(format!("{}/{}/include", os_folder, arch_folder))]

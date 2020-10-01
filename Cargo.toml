@@ -90,6 +90,11 @@ build-lib-x264             = ["build"]
 build-lib-x265             = ["build"]
 build-lib-avs              = ["build"]
 build-lib-xvid             = ["build"]
+build-lib-vdpau            = ["build"]
+build-lib-cuvid            = ["build"]
+
+link-lib-vdpau            = []
+link-lib-cuvid            = []
 
 # protocols
 build-lib-smbclient = ["build"]
